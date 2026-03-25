@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tyree Spatial | Geospatial Data Infrastructure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 2rem 4rem 6rem;
+            background: var(--tan);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 580px;
+        }
+
+        .hero-earth {
+            position: absolute;
+            right: -18%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60vw;
+            max-width: 850px;
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--green-accent);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
+        }
+
+        .hero-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            font-weight: 400;
+            line-height: 1.25;
+            color: var(--green-darkest);
+            margin-bottom: 1.25rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.4s forwards;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--green-dark);
+            max-width: 500px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
+        }
+
+        /* WHAT WE DO */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .cap-card {
+            background: var(--green-dark);
+            border: 1px solid var(--green-mid);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .cap-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--green-accent);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+        }
+
+        .cap-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--green-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .cap-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--white);
+            fill: none;
+        }
+
+        .cap-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .cap-desc {
+            font-size: 0.9rem;
+            color: var(--white-soft);
+            line-height: 1.6;
+        }
+
+        /* FEATURED PRODUCT */
+        .featured-header {
+            max-width: 1100px;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .featured-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+            font-weight: 400;
+        }
+
+        .bg-tan .featured-header h2 { color: var(--green-darkest); }
+
+        .featured-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .featured-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .featured-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            text-decoration: none;
+            display: block;
+        }
+
+        .featured-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .featured-image.placeholder {
+            aspect-ratio: 16/10;
+            background: var(--green-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--green-mid);
+        }
+
+        .featured-image.placeholder svg {
+            width: 64px;
+            height: 64px;
+            stroke: var(--green-light);
+            fill: none;
+            opacity: 0.5;
+        }
+
+        .bg-tan .featured-image { border: 1px solid var(--tan-soft); }
+
+        .featured-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--green-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .bg-tan .featured-label { color: var(--green-accent); }
+
+        .featured-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .bg-tan .featured-title { color: var(--green-darkest); }
+
+        .featured-desc {
+            font-size: 0.95rem;
+            color: var(--white-soft);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .bg-tan .featured-desc { color: var(--green-dark); }
+
+        .featured-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .featured-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--green-light);
+        }
+
+        .bg-tan .featured-stat-num { color: var(--green-accent); }
+
+        .featured-stat-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white-soft);
+            margin-top: 0.15rem;
+        }
+
+        .bg-tan .featured-stat-label { color: var(--green-dark); }
+
+        /* OTHER WORK GRID */
+        .other-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+        }
+
+        .other-card {
+            position: relative;
+            aspect-ratio: 16/10;
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            border: 1px solid var(--green-mid);
+            transition: all 0.4s ease;
+        }
+
+        .other-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+            border-color: var(--green-accent);
+        }
+
+        .other-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .other-card:hover img { transform: scale(1.06); }
+
+        .other-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, hsla(143,66%,5%,0.95) 0%, hsla(143,66%,5%,0.65) 40%, transparent 100%);
+            z-index: 1;
+        }
+
+        .other-card-content {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1rem;
+            z-index: 2;
+        }
+
+        .other-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 0.15rem;
+        }
+
+        .other-card-tag {
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green-light);
+        }
+
+        .other-more {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        /* CTA WITH GLOBE */
+        .cta-bottom {
+            padding: 3.5rem 2rem;
+            background: var(--tan);
+            overflow: hidden;
+        }
+
+        .cta-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 3vw, 1.75rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--green-darkest);
+        }
+
+        .cta-sub {
+            font-size: 0.95rem;
+            color: var(--green-dark);
+            margin-bottom: 1.25rem;
+            max-width: 450px;
+        }
+
+        .cta-globe-wrap {
+            width: 220px;
+            height: 220px;
+        }
+
+        .cta-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero {
+                padding: 6rem 2rem 3rem;
+                text-align: center;
+                justify-content: center;
+            }
+            .hero-content { max-width: 600px; margin: 0 auto; }
+            .hero-cta { justify-content: center; }
+            .hero-earth {
+                right: -20%; top: auto; bottom: -30%;
+                transform: none; width: 85vw; opacity: 0.1;
+            }
+            .capabilities-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .featured-layout { grid-template-columns: 1fr; gap: 2rem; }
+            .other-grid { grid-template-columns: repeat(2, 1fr); }
+            .cta-inner { grid-template-columns: 1fr; text-align: center; }
+            .cta-globe-wrap { width: 180px; height: 180px; margin: 0 auto; }
+        }
+
+        @media (max-width: 600px) {
+            .hero { padding: 5rem 1.5rem 2.5rem; }
+            .hero-headline { font-size: 1.5rem; }
+            .hero-cta { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav"></div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/earth.png" alt="" class="hero-earth">
+        <div class="hero-content">
+            <p class="hero-label">Tyree Spatial</p>
+            <h1 class="hero-headline">Geospatial Data Infrastructure for Energy & Environment</h1>
+            <p class="hero-sub">We build sophisticated data pipelines, scoring engines, and intelligence platforms that turn complex geospatial data into actionable decisions.</p>
+            <div class="hero-cta">
+                <a href="solutions.html" class="btn btn-primary">
+                    See Our Solutions
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+                <a href="contact.html" class="btn btn-secondary dark">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="section bg-dark">
+        <div class="section-header">
+            <p class="section-label">What We Do</p>
+            <h2 class="section-title">Capabilities</h2>
+        </div>
+        <div class="container">
+            <div class="capabilities-grid">
+                <div class="cap-card reveal">
+                    <div class="cap-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    </div>
+                    <h3 class="cap-title">Data Pipelines & Infrastructure</h3>
+                    <p class="cap-desc">Cloud-native pipelines that aggregate federal datasets, satellite imagery, and third-party APIs into unified, query-ready databases.</p>
+                </div>
+                <div class="cap-card reveal">
+                    <div class="cap-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path><path d="M9 21V9"></path></svg>
+                    </div>
+                    <h3 class="cap-title">Site Intelligence & Scoring</h3>
+                    <p class="cap-desc">Automated suitability analysis that scores parcels across environmental, infrastructure, and regulatory dimensions in seconds.</p>
+                </div>
+                <div class="cap-card reveal">
+                    <div class="cap-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    </div>
+                    <h3 class="cap-title">Document Intelligence</h3>
+                    <p class="cap-desc">AI-powered extraction pipelines that convert unstructured PDFs and reports into clean, structured data ready for analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SNAPSHOT -->
+    <section class="section bg-tan" id="snapshot">
+        <div class="featured-header reveal">
+            <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Snap_logo.png" alt="Snapshot logo" class="featured-logo">
+            <h2>Snapshot</h2>
+        </div>
+        <div class="featured-layout">
+            <a href="https://snapshot-tyree.web.app/" target="_blank" class="featured-image reveal">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/snapshot1.png" alt="Snapshot platform">
+            </a>
+            <div class="reveal">
+                <p class="featured-label">Energy Siting & Due Diligence</p>
+                <h3 class="featured-title">Institutional-grade site feasibility analysis for solar, data center, and energy development.</h3>
+                <p class="featured-desc">Snapshot aggregates 20+ federal geospatial datasets into a single serverless pipeline — scoring any U.S. parcel for environmental risk, grid proximity, and regulatory constraints in under 60 seconds. Built on a SQL-powered cloud database with API proxy architecture and automated PDF/Excel reporting.</p>
+                <div class="featured-stats">
+                    <div>
+                        <div class="featured-stat-num">20+</div>
+                        <div class="featured-stat-label">Federal Datasets</div>
+                    </div>
+                    <div>
+                        <div class="featured-stat-num">100pt</div>
+                        <div class="featured-stat-label">Scoring System</div>
+                    </div>
+                    <div>
+                        <div class="featured-stat-num">&lt;60s</div>
+                        <div class="featured-stat-label">Analysis Time</div>
+                    </div>
+                </div>
+                <a href="https://snapshot-tyree.web.app/" target="_blank" class="btn btn-primary">
+                    Launch Snapshot
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GROUNDWORK -->
+    <section class="section bg-dark" id="groundwork">
+        <div class="featured-header reveal">
+            <h2>Groundwork</h2>
+        </div>
+        <div class="featured-layout">
+            <a href="https://qtyree1328.github.io/Lead-Forms/" target="_blank" class="featured-image reveal">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/groundwork.png" alt="Groundwork platform">
+            </a>
+            <div class="reveal">
+                <p class="featured-label">Business Systems for Energy & Trades</p>
+                <h3 class="featured-title">Custom client intake, project tracking, and admin dashboards — built once, handed off.</h3>
+                <p class="featured-desc">Groundwork replaces phone tag, paper forms, and spreadsheet chaos with a branded digital platform deployed on your domain. Multi-step intake forms with e-signatures, real-time dashboards with maps and analytics, and centralized project management for field teams.</p>
+                <div class="featured-stats">
+                    <div>
+                        <div class="featured-stat-num">4</div>
+                        <div class="featured-stat-label">Live Deployments</div>
+                    </div>
+                    <div>
+                        <div class="featured-stat-num">500+</div>
+                        <div class="featured-stat-label">Projects Managed</div>
+                    </div>
+                    <div>
+                        <div class="featured-stat-num">$0/mo</div>
+                        <div class="featured-stat-label">No Subscription</div>
+                    </div>
+                </div>
+                <a href="https://qtyree1328.github.io/Lead-Forms/" target="_blank" class="btn btn-primary">
+                    View Groundwork
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUDISTILL -->
+    <section class="section bg-tan" id="docudistill">
+        <div class="featured-header reveal">
+            <h2>DocuDistill</h2>
+        </div>
+        <div class="featured-layout">
+            <a href="https://qtyree1328.github.io/docudistill/" target="_blank" class="featured-image reveal">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/DocuDistill.png" alt="DocuDistill platform">
+            </a>
+            <div class="reveal">
+                <p class="featured-label">Document Intelligence</p>
+                <h3 class="featured-title">AI-driven extraction pipeline that turns unstructured PDFs into clean, spreadsheet-ready data.</h3>
+                <p class="featured-desc">DocuDistill uses Claude Vision with reusable extraction templates to process documents at scale. Upload manually, in bulk, or via web scraper — then export normalized data as styled Excel workbooks. Supports forms, narrative reports, tables, and mixed handwritten/printed records.</p>
+                <div class="featured-stats">
+                    <div>
+                        <div class="featured-stat-num">4</div>
+                        <div class="featured-stat-label">Extraction Methods</div>
+                    </div>
+                    <div>
+                        <div class="featured-stat-num">Async</div>
+                        <div class="featured-stat-label">Background Queue</div>
+                    </div>
+                    <div>
+                        <div class="featured-stat-num">Excel</div>
+                        <div class="featured-stat-label">Styled Export</div>
+                    </div>
+                </div>
+                <a href="https://qtyree1328.github.io/docudistill/" target="_blank" class="btn btn-primary">
+                    View DocuDistill
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTHER WORK -->
+    <section class="section bg-dark">
+        <div class="section-header">
+            <p class="section-label">Other Work</p>
+            <h2 class="section-title">More Applications</h2>
+            <p class="section-subtitle">Geospatial tools, data visualizations, and web applications across various domains.</p>
+        </div>
+        <div class="other-grid">
+            <a href="https://whalewatchersatlas.com/" class="other-card reveal" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Whale_watchers.png" alt="Whale Watchers">
+                <div class="other-card-content">
+                    <h3 class="other-card-name">Whale Watchers Atlas</h3>
+                    <p class="other-card-tag">Marine Conservation</p>
+                </div>
+            </a>
+            <a href="https://geospatialfms.com" class="other-card reveal" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/geofm.jpg" alt="GeoFM Explorer">
+                <div class="other-card-content">
+                    <h3 class="other-card-name">GeoFM Explorer</h3>
+                    <p class="other-card-tag">Foundation Models</p>
+                </div>
+            </a>
+            <a href="https://explorereflectance.com/" class="other-card reveal" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Explore_reflectance.png" alt="Explore Reflectance">
+                <div class="other-card-content">
+                    <h3 class="other-card-name">Explore Reflectance</h3>
+                    <p class="other-card-tag">Remote Sensing</p>
+                </div>
+            </a>
+            <a href="https://hospitalfarmshed.com/" class="other-card reveal" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Farmshed.png" alt="Hospital Farmshed">
+                <div class="other-card-content">
+                    <h3 class="other-card-name">Hospital Farmshed</h3>
+                    <p class="other-card-tag">Agricultural Analysis</p>
+                </div>
+            </a>
+        </div>
+        <div class="other-more">
+            <a href="other.html" class="btn btn-secondary reveal">
+                View All Projects
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA WITH GLOBE -->
+    <section class="cta-bottom">
+        <div class="cta-inner">
+            <div>
+                <h2 class="cta-title reveal">Ready to Build Your Data Infrastructure?</h2>
+                <p class="cta-sub reveal">Let's discuss how Tyree Spatial can power your next project.</p>
+                <a href="contact.html" class="btn btn-primary reveal">
+                    Start a Conversation
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+            <div class="cta-globe-wrap">
+                <canvas class="cta-canvas" id="globeCanvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="nav.js"></script>
+    <script>
+        document.getElementById('nav').innerHTML = getNav('Home');
+        document.getElementById('footer').innerHTML = getFooter();
+        initNav();
+        initReveal();
+
+        // Spinning Globe
+        const canvas = document.getElementById('globeCanvas');
+        const ctx = canvas.getContext('2d');
+        let time = 0;
+        function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        function drawGlobe() {
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+            const cx = w * 0.5, cy = h * 0.5, r = Math.min(w, h) * 0.42;
+            const grad = ctx.createRadialGradient(cx - r * 0.3, cy - r * 0.3, 0, cx, cy, r);
+            grad.addColorStop(0, '#25a882'); grad.addColorStop(0.4, '#126b5c'); grad.addColorStop(0.85, '#0e4a45'); grad.addColorStop(1, '#072828');
+            ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
+            ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1;
+            for (let i = -2; i <= 2; i++) { const latY = cy + i * r * 0.3; const latR = Math.sqrt(r * r - (i * r * 0.3) ** 2); if (latR > 0) { ctx.beginPath(); ctx.ellipse(cx, latY, latR, latR * 0.1, 0, 0, Math.PI * 2); ctx.stroke(); } }
+            ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+            for (let i = 0; i < 6; i++) { const angle = (i / 6) * Math.PI + time * 0.15; const scaleX = Math.cos(angle); ctx.beginPath(); ctx.ellipse(cx, cy, Math.abs(scaleX) * r, r, 0, 0, Math.PI * 2); ctx.stroke(); }
+            for (let i = 0; i < 6; i++) { const orbitR = r * (1.15 + i * 0.1); const speed = 0.25 + i * 0.08; const satAngle = time * speed + (i * Math.PI * 0.35); for (let t = 0; t < 25; t++) { const ta = satAngle - (t * 0.03); const tx = cx + Math.cos(ta) * orbitR; const ty = cy + Math.sin(ta) * orbitR * 0.35; ctx.fillStyle = 'rgba(120,230,200,' + ((1 - t / 25) * 0.8) + ')'; ctx.beginPath(); ctx.arc(tx, ty, 3 - (t / 25) * 2, 0, Math.PI * 2); ctx.fill(); } const sx = cx + Math.cos(satAngle) * orbitR; const sy = cy + Math.sin(satAngle) * orbitR * 0.35; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(sx, sy, 3.5, 0, Math.PI * 2); ctx.fill(); const sg = ctx.createRadialGradient(sx, sy, 0, sx, sy, 12); sg.addColorStop(0, 'rgba(120,230,200,0.4)'); sg.addColorStop(1, 'rgba(120,230,200,0)'); ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(sx, sy, 12, 0, Math.PI * 2); ctx.fill(); }
+            ctx.fillStyle = 'rgba(100,220,180,0.6)';
+            for (let i = 0; i < 8; i++) { const pa = time * 0.08 + (i * Math.PI * 0.25); const pl = Math.sin(i * 1.3) * 0.6; const px = cx + Math.cos(pa) * r * 0.85 * Math.sqrt(1 - pl * pl); const py = cy + pl * r * 0.85; if (Math.cos(pa) > -0.2) { ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2); ctx.fill(); } }
+            time += 0.006; requestAnimationFrame(drawGlobe);
+        }
+        drawGlobe();
+    </script>
+</body>
+</html>

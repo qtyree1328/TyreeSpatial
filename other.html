@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Work | Tyree Spatial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* PAGE HEADER */
+        .page-header {
+            padding: 8rem 2rem 2.5rem;
+            text-align: center;
+            background: var(--green-dark);
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .page-intro {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--white-soft);
+            text-align: center;
+        }
+
+        /* SECTIONS */
+        .projects-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--green-dark);
+        }
+
+        .projects-section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .projects-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            color: var(--white);
+            white-space: nowrap;
+        }
+
+        .projects-section-divider {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--white-soft), transparent);
+        }
+
+        /* PROJECT ROWS */
+        .project {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .project:nth-child(even) {
+            direction: rtl;
+        }
+
+        .project:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .project:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-image {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--green-mid);
+            transition: all 0.4s ease;
+            display: block;
+            text-decoration: none;
+        }
+
+        .project-image:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--green-accent);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .project-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-content p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--white-soft);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            background: var(--green-accent);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: var(--green-light);
+            transform: translateY(-2px);
+        }
+
+        .project-link svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            fill: none;
+            transition: transform 0.3s ease;
+        }
+
+        .project-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* CTA */
+        .cta-bottom {
+            padding: 3.5rem 2rem;
+            background: var(--tan);
+            overflow: hidden;
+        }
+
+        .cta-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 3vw, 1.75rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--green-darkest);
+        }
+
+        .cta-sub {
+            font-size: 0.95rem;
+            color: var(--green-dark);
+            margin-bottom: 1.25rem;
+            max-width: 450px;
+        }
+
+        .cta-globe-wrap {
+            width: 220px;
+            height: 220px;
+        }
+
+        .cta-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .project {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project:nth-child(even) {
+                direction: ltr;
+            }
+
+            .projects-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-inner { grid-template-columns: 1fr; text-align: center; }
+            .cta-globe-wrap { width: 180px; height: 180px; margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav"></div>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <h1>Other Web Applications</h1>
+        <p class="page-intro">A collection of geospatial tools, data visualizations, and web applications I've built across various industries using Mapbox, Streamlit, Globe.gl, Google Earth Engine, Leafmap, and more.</p>
+    </header>
+
+    <!-- APPLICATIONS -->
+    <section class="projects-section">
+        <div class="projects-section-header reveal">
+            <h2 class="projects-section-title">Applications</h2>
+            <div class="projects-section-divider"></div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://whalewatchersatlas.com/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Whale_watchers.png" alt="Whale Watchers Atlas">
+            </a>
+            <div class="project-content">
+                <h3>Whale Watchers Atlas</h3>
+                <p>An interactive 3D globe visualization built with Globe.gl that tracks whale migration patterns across the world's oceans. Users can explore migration routes, seasonal movements, and population data for multiple whale species.</p>
+                <a href="https://whalewatchersatlas.com/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://geospatialfms.com" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/geofm.jpg" alt="GeoFM Explorer">
+            </a>
+            <div class="project-content">
+                <h3>GeoFM Explorer</h3>
+                <p>An educational platform exploring Large Earth Observation Models (LEOMs) — the foundation models trained on satellite imagery. Compare architectures, explore embedding dimensions, and understand how these models transform remote sensing.</p>
+                <a href="https://geospatialfms.com" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://qtyree1328.github.io/imagery-atlas/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/imagery_atlas.jpg" alt="Imagery Atlas">
+            </a>
+            <div class="project-content">
+                <h3>Imagery Atlas</h3>
+                <p>A comprehensive directory of satellite imagery datasets, organized by sensor type, resolution, and coverage. Helps researchers quickly find the right data sources for their remote sensing projects.</p>
+                <a href="https://qtyree1328.github.io/imagery-atlas/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://tyreespatial.com/gis/collaborative-earth-beaver-lab" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Beaver_lab.png" alt="Beaver Lab">
+            </a>
+            <div class="project-content">
+                <h3>Beaver Impact Tool</h3>
+                <p>A research platform developed with Collaborative Earth to analyze the ecological impact of beaver activity on watershed restoration. Uses remote sensing to identify beaver dam locations and model their effects on water retention and vegetation.</p>
+                <a href="https://tyreespatial.com/gis/collaborative-earth-beaver-lab" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://hospitalfarmshed.com/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Farmshed.png" alt="Hospital Farmshed">
+            </a>
+            <div class="project-content">
+                <h3>Hospital Farmshed</h3>
+                <p>An agricultural analysis platform that maps local food sourcing potential for healthcare institutions. Calculates multi-dimensional scores measuring Scale, Diversity, Quality, and Accessibility of farms within a hospital's procurement radius.</p>
+                <a href="https://hospitalfarmshed.com/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://explorereflectance.com/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Explore_reflectance.png" alt="Explore Reflectance">
+            </a>
+            <div class="project-content">
+                <h3>Explore Reflectance</h3>
+                <p>A spectral analysis tool built with Streamlit and Google Earth Engine that allows users to explore how different materials reflect electromagnetic radiation. Compare spectral signatures to understand remote sensing fundamentals.</p>
+                <a href="https://explorereflectance.com/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://qtyree1328.github.io/Cougar_connectivity_mapbox/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Connectivity.png" alt="Habitat Connectivity">
+            </a>
+            <div class="project-content">
+                <h3>Habitat Connectivity Analysis</h3>
+                <p>An interactive Mapbox application that visualizes wildlife corridor analysis for mountain lion populations. Maps least-cost pathways between habitat patches, identifying critical pinch points where development may fragment wildlife movement.</p>
+                <a href="https://qtyree1328.github.io/Cougar_connectivity_mapbox/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://nbatrends.com/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Nba_trends.png" alt="NBA Trends">
+            </a>
+            <div class="project-content">
+                <h3>NBA Trends</h3>
+                <p>A sports analytics dashboard that visualizes NBA performance data and trends over time. Interactive charts and comparisons for player stats, team performance, and league-wide patterns.</p>
+                <a href="https://nbatrends.com/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://lockditin.com/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/lockditin.png" alt="Lock'd It In">
+            </a>
+            <div class="project-content">
+                <h3>Lock'd It In</h3>
+                <p>A trip planning application that helps users organize and map out travel itineraries. Plan routes, save locations, and share trips with a clean, intuitive interface.</p>
+                <a href="https://lockditin.com/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://nosologia.com" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/nosologia.jpg" alt="Nosologia">
+            </a>
+            <div class="project-content">
+                <h3>Nosologia</h3>
+                <p>A medical education platform for exploring disease classification systems and nosological frameworks. Helps students and practitioners navigate the taxonomy of diseases and disorders.</p>
+                <a href="https://nosologia.com" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="project reveal">
+            <a href="https://qtyree1328.github.io/groove-master/" class="project-image" target="_blank">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/groove_master.jpg" alt="Groove Master">
+            </a>
+            <div class="project-content">
+                <h3>Groove Master</h3>
+                <p>A music practice tool designed to help musicians develop rhythm and timing. Interactive metronome with pattern exercises and progress tracking.</p>
+                <a href="https://qtyree1328.github.io/groove-master/" class="project-link" target="_blank">
+                    Visit Site
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA WITH GLOBE -->
+    <section class="cta-bottom">
+        <div class="cta-inner">
+            <div>
+                <h2 class="cta-title reveal">Interested in Working Together?</h2>
+                <p class="cta-sub reveal">Whether it's a custom web app, data platform, or visualization — let's talk.</p>
+                <a href="contact.html" class="btn btn-primary reveal">
+                    Get in Touch
+                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+            <div class="cta-globe-wrap">
+                <canvas class="cta-canvas" id="globeCanvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="nav.js"></script>
+    <script>
+        document.getElementById('nav').innerHTML = getNav('Other');
+        document.getElementById('footer').innerHTML = getFooter();
+        initNav();
+        initReveal();
+
+        // Spinning Globe
+        const canvas = document.getElementById('globeCanvas');
+        const ctx = canvas.getContext('2d');
+        let time = 0;
+        function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        function drawGlobe() {
+            const w = canvas.width, h = canvas.height;
+            ctx.clearRect(0, 0, w, h);
+            const cx = w * 0.5, cy = h * 0.5, r = Math.min(w, h) * 0.42;
+            const grad = ctx.createRadialGradient(cx - r * 0.3, cy - r * 0.3, 0, cx, cy, r);
+            grad.addColorStop(0, '#25a882'); grad.addColorStop(0.4, '#126b5c'); grad.addColorStop(0.85, '#0e4a45'); grad.addColorStop(1, '#072828');
+            ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fillStyle = grad; ctx.fill();
+            ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1;
+            for (let i = -2; i <= 2; i++) { const latY = cy + i * r * 0.3; const latR = Math.sqrt(r * r - (i * r * 0.3) ** 2); if (latR > 0) { ctx.beginPath(); ctx.ellipse(cx, latY, latR, latR * 0.1, 0, 0, Math.PI * 2); ctx.stroke(); } }
+            ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+            for (let i = 0; i < 6; i++) { const angle = (i / 6) * Math.PI + time * 0.15; const scaleX = Math.cos(angle); ctx.beginPath(); ctx.ellipse(cx, cy, Math.abs(scaleX) * r, r, 0, 0, Math.PI * 2); ctx.stroke(); }
+            for (let i = 0; i < 6; i++) { const orbitR = r * (1.15 + i * 0.1); const speed = 0.25 + i * 0.08; const satAngle = time * speed + (i * Math.PI * 0.35); for (let t = 0; t < 25; t++) { const ta = satAngle - (t * 0.03); const tx = cx + Math.cos(ta) * orbitR; const ty = cy + Math.sin(ta) * orbitR * 0.35; ctx.fillStyle = 'rgba(120,230,200,' + ((1 - t / 25) * 0.8) + ')'; ctx.beginPath(); ctx.arc(tx, ty, 3 - (t / 25) * 2, 0, Math.PI * 2); ctx.fill(); } const sx = cx + Math.cos(satAngle) * orbitR; const sy = cy + Math.sin(satAngle) * orbitR * 0.35; ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(sx, sy, 3.5, 0, Math.PI * 2); ctx.fill(); const sg = ctx.createRadialGradient(sx, sy, 0, sx, sy, 12); sg.addColorStop(0, 'rgba(120,230,200,0.4)'); sg.addColorStop(1, 'rgba(120,230,200,0)'); ctx.fillStyle = sg; ctx.beginPath(); ctx.arc(sx, sy, 12, 0, Math.PI * 2); ctx.fill(); }
+            ctx.fillStyle = 'rgba(100,220,180,0.6)';
+            for (let i = 0; i < 8; i++) { const pa = time * 0.08 + (i * Math.PI * 0.25); const pl = Math.sin(i * 1.3) * 0.6; const px = cx + Math.cos(pa) * r * 0.85 * Math.sqrt(1 - pl * pl); const py = cy + pl * r * 0.85; if (Math.cos(pa) > -0.2) { ctx.beginPath(); ctx.arc(px, py, 3, 0, Math.PI * 2); ctx.fill(); } }
+            time += 0.006; requestAnimationFrame(drawGlobe);
+        }
+        drawGlobe();
+    </script>
+</body>
+</html>

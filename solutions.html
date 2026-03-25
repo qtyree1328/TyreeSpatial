@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions | Tyree Spatial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            padding: 10rem 2rem 5rem;
+            background: var(--green-darkest);
+            text-align: center;
+        }
+
+        .page-hero .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 0.75rem;
+        }
+
+        /* PRODUCT SECTION */
+        .product-section {
+            scroll-margin-top: 64px;
+        }
+
+        .product-header {
+            max-width: 1100px;
+            margin: 0 auto 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .product-logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+            font-weight: 400;
+        }
+
+        .bg-tan .product-name { color: var(--green-darkest); }
+
+        .product-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .product-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            text-decoration: none;
+            display: block;
+        }
+
+        .product-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .bg-tan .product-image { border: 1px solid var(--tan-soft); }
+        .bg-dark .product-image { border: 1px solid var(--green-mid); }
+
+        .product-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--green-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .bg-tan .product-tag { color: var(--green-accent); }
+
+        .product-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .bg-tan .product-headline { color: var(--green-darkest); }
+
+        .product-desc {
+            font-size: 0.95rem;
+            color: var(--white-soft);
+            line-height: 1.7;
+            margin-bottom: 1.25rem;
+        }
+
+        .bg-tan .product-desc { color: var(--green-dark); }
+
+        .product-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--green-light);
+        }
+
+        .bg-tan .product-stat-num { color: var(--green-accent); }
+
+        .product-stat-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white-soft);
+            margin-top: 0.15rem;
+        }
+
+        .bg-tan .product-stat-label { color: var(--green-dark); }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.75rem;
+        }
+
+        .product-features li {
+            font-size: 0.85rem;
+            color: var(--white-soft);
+            padding: 0.3rem 0 0.3rem 1.5rem;
+            position: relative;
+        }
+
+        .bg-tan .product-features li { color: var(--green-dark); }
+
+        .product-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green-accent);
+        }
+
+        .product-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* TECH STACK PILLS */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-pill {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            background: var(--green-mid);
+            color: var(--green-light);
+        }
+
+        .bg-tan .tech-pill {
+            background: var(--tan-soft);
+            color: var(--green-accent);
+        }
+
+        /* INDUSTRIES */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .industry-card {
+            text-align: center;
+            padding: 2rem 1.25rem;
+            border: 1px solid var(--green-mid);
+            border-radius: 16px;
+            transition: all 0.4s;
+        }
+
+        .industry-card:hover {
+            border-color: var(--green-accent);
+            transform: translateY(-4px);
+        }
+
+        .industry-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+            background: var(--green-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .industry-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--white);
+            fill: none;
+        }
+
+        .industry-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 900px) {
+            .product-layout { grid-template-columns: 1fr; gap: 2rem; }
+            .product-header { justify-content: center; }
+            .industries-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .product-stats { gap: 1.5rem; flex-wrap: wrap; }
+            .product-cta { flex-direction: column; align-items: stretch; }
+            .product-cta .btn { justify-content: center; }
+            .industries-grid { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav"></div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <p class="section-label">Solutions</p>
+        <h1 class="section-title">Our Products & Solutions</h1>
+        <p class="section-subtitle">Production-ready platforms built for energy, environmental, and infrastructure workflows.</p>
+    </section>
+
+    <!-- SNAPSHOT -->
+    <section class="section bg-tan product-section" id="snapshot">
+        <div class="product-header reveal">
+            <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/Snap_logo.png" alt="Snapshot logo" class="product-logo">
+            <h2 class="product-name">Snapshot</h2>
+        </div>
+        <div class="product-layout">
+            <a href="https://snapshot-tyree.web.app/" target="_blank" class="product-image reveal">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/snapshot1.png" alt="Snapshot platform">
+            </a>
+            <div class="reveal">
+                <p class="product-tag">Energy Siting & Due Diligence</p>
+                <h3 class="product-headline">Institutional-grade site feasibility analysis for solar, data center, and energy development.</h3>
+                <p class="product-desc">Snapshot aggregates 20+ federal geospatial datasets into a single serverless pipeline — scoring any U.S. parcel for environmental risk, grid proximity, and regulatory constraints in under 60 seconds. Built on a SQL-powered cloud database with API proxy architecture and automated PDF/Excel reporting.</p>
+                <div class="product-stats">
+                    <div>
+                        <div class="product-stat-num">20+</div>
+                        <div class="product-stat-label">Federal Datasets</div>
+                    </div>
+                    <div>
+                        <div class="product-stat-num">100pt</div>
+                        <div class="product-stat-label">Scoring System</div>
+                    </div>
+                    <div>
+                        <div class="product-stat-num">&lt;60s</div>
+                        <div class="product-stat-label">Analysis Time</div>
+                    </div>
+                </div>
+                <ul class="product-features">
+                    <li>Three scoring models: solar development, energy infrastructure, mineral resource</li>
+                    <li>9 analysis dimensions — power, environmental risk, solar, terrain, land use, protected areas, broadband, hazards, contamination</li>
+                    <li>Environmental risk screening: critical habitat, wetlands, flood zones, Superfund sites</li>
+                    <li>Power infrastructure mapping: transmission lines, substations, gas pipelines with voltage classification</li>
+                    <li>AI-generated plain-language site summaries</li>
+                    <li>Automated PDF reports and Excel/GeoJSON/CSV data exports</li>
+                    <li>Stripe-integrated usage-based pricing with free preview</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-pill">Firebase</span>
+                    <span class="tech-pill">Cloud Functions</span>
+                    <span class="tech-pill">Firestore</span>
+                    <span class="tech-pill">MapLibre GL</span>
+                    <span class="tech-pill">Stripe</span>
+                    <span class="tech-pill">Gemini AI</span>
+                </div>
+                <div class="product-cta">
+                    <a href="https://snapshot-tyree.web.app/" target="_blank" class="btn btn-primary">
+                        Launch Snapshot
+                        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GROUNDWORK -->
+    <section class="section bg-dark product-section" id="groundwork">
+        <div class="product-header reveal">
+            <h2 class="product-name">Groundwork</h2>
+        </div>
+        <div class="product-layout">
+            <a href="https://qtyree1328.github.io/Lead-Forms/" target="_blank" class="product-image reveal">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/groundwork.png" alt="Groundwork platform">
+            </a>
+            <div class="reveal">
+                <p class="product-tag">Business Systems for Energy & Trades</p>
+                <h3 class="product-headline">Custom client intake, project tracking, and admin dashboards — built once, handed off.</h3>
+                <p class="product-desc">Groundwork replaces phone tag, paper forms, and spreadsheet chaos with a branded digital platform deployed on your domain. Multi-step intake forms with e-signatures, real-time dashboards with maps and analytics, and centralized project management for field teams.</p>
+                <div class="product-stats">
+                    <div>
+                        <div class="product-stat-num">4</div>
+                        <div class="product-stat-label">Live Deployments</div>
+                    </div>
+                    <div>
+                        <div class="product-stat-num">500+</div>
+                        <div class="product-stat-label">Projects Managed</div>
+                    </div>
+                    <div>
+                        <div class="product-stat-num">$0/mo</div>
+                        <div class="product-stat-label">No Subscription</div>
+                    </div>
+                </div>
+                <ul class="product-features">
+                    <li>Branded multi-step intake forms with address verification and e-signatures</li>
+                    <li>Admin dashboards with pipeline analytics, revenue tracking, and volume trends</li>
+                    <li>Interactive Leaflet maps with status-coded project markers</li>
+                    <li>Complete client profiles with documents, notes, and activity logs</li>
+                    <li>Team assignment, role-based access, and email notifications</li>
+                    <li>Document management with built-in viewer for contracts and bills</li>
+                    <li>Three pricing tiers: Essentials ($1,500), Professional ($3,500), Enterprise (custom)</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-pill">Firebase</span>
+                    <span class="tech-pill">Leaflet.js</span>
+                    <span class="tech-pill">Vanilla JS</span>
+                    <span class="tech-pill">E-Signatures</span>
+                </div>
+                <div class="product-cta">
+                    <a href="https://qtyree1328.github.io/Lead-Forms/" target="_blank" class="btn btn-primary">
+                        View Groundwork
+                        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary">Request a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUDISTILL -->
+    <section class="section bg-tan product-section" id="docudistill">
+        <div class="product-header reveal">
+            <h2 class="product-name">DocuDistill</h2>
+        </div>
+        <div class="product-layout">
+            <a href="https://qtyree1328.github.io/docudistill/" target="_blank" class="product-image reveal">
+                <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/DocuDistill.png" alt="DocuDistill platform">
+            </a>
+            <div class="reveal">
+                <p class="product-tag">Document Intelligence</p>
+                <h3 class="product-headline">AI-driven extraction pipeline that turns unstructured PDFs into clean, spreadsheet-ready data.</h3>
+                <p class="product-desc">DocuDistill uses Claude Vision with reusable extraction templates to process documents at scale. Upload manually, in bulk, or via web scraper — then export normalized data as styled Excel workbooks. Supports forms, narrative reports, tables, and mixed handwritten/printed records.</p>
+                <div class="product-stats">
+                    <div>
+                        <div class="product-stat-num">4</div>
+                        <div class="product-stat-label">Extraction Methods</div>
+                    </div>
+                    <div>
+                        <div class="product-stat-num">Async</div>
+                        <div class="product-stat-label">Background Queue</div>
+                    </div>
+                    <div>
+                        <div class="product-stat-num">Excel</div>
+                        <div class="product-stat-label">Styled Export</div>
+                    </div>
+                </div>
+                <ul class="product-features">
+                    <li>Four extraction strategies: Guided Field Map, Section Inventory, Table First, Hybrid Review</li>
+                    <li>Template builder that auto-drafts presets from 3-5 sample documents</li>
+                    <li>Preset suggestion engine with filename/header-based matching</li>
+                    <li>Background worker queue with status tracking, retry, and cancel controls</li>
+                    <li>Web scraper for bulk PDF ingestion from URLs</li>
+                    <li>Page-scope control to minimize token spend</li>
+                    <li>Styled Excel export with structured fields, sections, tables, and review flags</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech-pill">Flask</span>
+                    <span class="tech-pill">PostgreSQL</span>
+                    <span class="tech-pill">Claude Vision</span>
+                    <span class="tech-pill">SQLAlchemy</span>
+                    <span class="tech-pill">openpyxl</span>
+                </div>
+                <div class="product-cta">
+                    <a href="https://qtyree1328.github.io/docudistill/" target="_blank" class="btn btn-primary">
+                        View DocuDistill
+                        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary dark">Request a Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section class="section bg-dark">
+        <div class="section-header">
+            <p class="section-label">Industries</p>
+            <h2 class="section-title">Who We Serve</h2>
+        </div>
+        <div class="industries-grid">
+            <div class="industry-card reveal">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </div>
+                <h3 class="industry-name">Solar & Renewables</h3>
+            </div>
+            <div class="industry-card reveal">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2"><path d="M2 22h20"></path><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path></svg>
+                </div>
+                <h3 class="industry-name">Energy Infrastructure</h3>
+            </div>
+            <div class="industry-card reveal">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3 class="industry-name">Environmental Services</h3>
+            </div>
+            <div class="industry-card reveal">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <h3 class="industry-name">Construction & Trades</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section bg-tan" style="text-align: center;">
+        <div class="container">
+            <h2 class="section-title reveal" style="color: var(--green-darkest);">Need a Custom Solution?</h2>
+            <p class="section-subtitle reveal">We build purpose-built platforms tailored to your data and workflow.</p>
+            <a href="contact.html" class="btn btn-primary reveal" style="margin-top: 1.5rem;">
+                Start a Conversation
+                <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="nav.js"></script>
+    <script>
+        document.getElementById('nav').innerHTML = getNav('Solutions');
+        document.getElementById('footer').innerHTML = getFooter();
+        initNav();
+        initReveal();
+    </script>
+</body>
+</html>

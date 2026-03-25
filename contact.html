@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Tyree Spatial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .page-hero {
+            padding: 10rem 2rem 5rem;
+            background: var(--green-darkest);
+            text-align: center;
+        }
+
+        .page-hero .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.75rem);
+            margin-bottom: 0.75rem;
+        }
+
+        /* ABOUT ME */
+        .about-layout {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-photo {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--green-mid);
+            aspect-ratio: 3/4;
+            background: var(--green-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-photo svg {
+            width: 64px;
+            height: 64px;
+            stroke: var(--green-light);
+            fill: none;
+            opacity: 0.4;
+        }
+
+        .about-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-role {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--green-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            color: var(--white-soft);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+
+        .about-highlights {
+            list-style: none;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .about-highlights li {
+            font-size: 0.9rem;
+            color: var(--white-soft);
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+        }
+
+        .about-highlights li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green-accent);
+        }
+
+        /* CONTACT LAYOUT */
+        .contact-layout {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--green-darkest);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 0.95rem;
+            color: var(--green-dark);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-detail-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--green-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--white);
+            fill: none;
+        }
+
+        .contact-detail-text {
+            font-size: 0.9rem;
+            color: var(--green-dark);
+        }
+
+        .contact-detail-text strong {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green-accent);
+            margin-bottom: 0.15rem;
+        }
+
+        /* FORM */
+        .contact-form {
+            background: var(--green-dark);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--green-mid);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--white-soft);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--green-darkest);
+            border: 1px solid var(--green-mid);
+            border-radius: 10px;
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--green-accent);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2360b88c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            margin-top: 0.5rem;
+        }
+
+        .form-submit .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        @media (max-width: 900px) {
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .about-photo {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .contact-form { padding: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav"></div>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <p class="section-label">Contact</p>
+        <h1 class="section-title">Get in Touch</h1>
+        <p class="section-subtitle">Have a project in mind? Let's discuss how we can help.</p>
+    </section>
+
+    <!-- ABOUT ME -->
+    <section class="section bg-dark">
+        <div class="about-layout">
+            <div class="about-photo reveal">
+                <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <div class="reveal">
+                <h2 class="about-name">Quintin Tyree</h2>
+                <p class="about-role">Geospatial Scientist & Developer</p>
+                <p class="about-text">I'm a geospatial developer with 5+ years of experience building data pipelines, remote sensing applications, and spatial analysis platforms for the energy and environmental sectors. I specialize in turning complex federal datasets into production-grade intelligence tools.</p>
+                <p class="about-text">Tyree Spatial is my consultancy focused on building sophisticated geospatial data infrastructure — from site suitability scoring engines to AI-powered document extraction pipelines. Every product I build is designed to replace weeks of manual GIS work with automated, repeatable analysis.</p>
+                <ul class="about-highlights">
+                    <li>Environmental modeling through remote sensing (optical, SAR, LiDAR)</li>
+                    <li>Site suitability assessment for energy infrastructure</li>
+                    <li>20+ federal API integrations (USGS, FEMA, NREL, EPA, FCC, USDA)</li>
+                    <li>Full-stack cloud architecture (Firebase, Google Cloud, PostgreSQL)</li>
+                    <li>AI-native document intelligence and automated reporting</li>
+                    <li>75K+ social following across geospatial content</li>
+                </ul>
+                <a href="other.html" class="btn btn-secondary">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="section bg-tan">
+        <div class="contact-layout">
+            <div class="contact-info reveal">
+                <h2>Let's Build Something Together</h2>
+                <p>Whether you need a geospatial data pipeline, a custom business platform, or a document intelligence solution — I'd love to hear about your project.</p>
+
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <div class="contact-detail-text">
+                        <strong>Email</strong>
+                        <a href="mailto:tyreespatial@gmail.com">tyreespatial@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    </div>
+                    <div class="contact-detail-text">
+                        <strong>Based In</strong>
+                        United States
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <div class="contact-detail-text">
+                        <strong>Response Time</strong>
+                        Typically within 24 hours
+                    </div>
+                </div>
+
+                <div class="contact-detail">
+                    <div class="contact-detail-icon">
+                        <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="contact-detail-text">
+                        <strong>Personal Portfolio</strong>
+                        <a href="https://hutchtyree.com" target="_blank">hutchtyree.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form reveal" action="mailto:tyreespatial@gmail.com" method="post" enctype="text/plain">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="interest">Interested In</label>
+                    <select id="interest" name="interest">
+                        <option value="">Select a topic...</option>
+                        <option value="snapshot">Snapshot — Site Suitability</option>
+                        <option value="groundwork">Groundwork — Business Systems</option>
+                        <option value="docudistill">DocuDistill — Document Intelligence</option>
+                        <option value="custom">Custom Data Pipeline / Platform</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script src="nav.js"></script>
+    <script>
+        document.getElementById('nav').innerHTML = getNav('Contact');
+        document.getElementById('footer').innerHTML = getFooter();
+        initNav();
+        initReveal();
+    </script>
+</body>
+</html>
