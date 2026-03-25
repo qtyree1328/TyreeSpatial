@@ -2,12 +2,9 @@
 
 ## Project Overview
 
-This repo contains two websites:
+This repo is **tyreespatial.com** — the permanent portfolio site for Quintin "Hutch" Tyree. It is a 4-page multi-page app (index.html, solutions.html, other.html, contact.html).
 
-1. **Tyree Spatial** (root-level files) — the business website for Tyree Spatial Consulting, hosted at tyreespatial.com
-2. **Personal portfolio** (`reference_html/`) — pages for hutchtyree.com (home.html, web-apps.html)
-
-These are separate sites with separate purposes. The Tyree Spatial site is a 4-page multi-page app. The portfolio pages are standalone HTML files embedded into the hutchtyree.com WordPress/Squarespace site.
+The `reference_html/` and `about.html` files are reference pages from the old personal site, now at **hutchtyree.com**. They are not part of the tyreespatial.com site — do not modify them when editing tyreespatial.com pages.
 
 ## Architecture
 

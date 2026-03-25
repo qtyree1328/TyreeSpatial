@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Tyree Spatial</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-darkest: hsl(143, 66%, 5%);
+      --green-dark: hsl(143, 66%, 9%);
+      --green-mid: hsl(143, 66%, 16%);
+      --green-accent: hsl(143, 66%, 25%);
+      --green-light: hsl(143, 66%, 40%);
+      --green-glow: hsla(143, 66%, 40%, 0.4);
+      --white: #f8faf9;
+      --white-soft: #e8eeeb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--green-dark) !important;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      width: 100%;
+      padding: 5rem 2rem 4rem;
+      background: var(--green-dark) !important;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .profile-photo {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--green-accent);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-text h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-bio {
+      font-size: 1.15rem;
+      line-height: 1.9;
+      color: var(--white-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio a {
+      color: var(--green-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .hero-bio a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .highlight-text {
+      font-family: "Playfair Display", serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: var(--green-light);
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background: var(--green-accent);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .cta-link:hover {
+      background: var(--green-light);
+      transform: translateY(-2px);
+    }
+
+    .cta-link svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-link:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* ========== PHOTOGRAPHY SECTION ========== */
+    .photo-section {
+      width: 100%;
+      padding: 4rem 2rem;
+      background: var(--green-dark) !important;
+    }
+
+    .photo-section-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .photo-oval {
+      flex-shrink: 0;
+      width: 350px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--green-accent);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .photo-oval:hover {
+      transform: scale(1.03);
+      border-color: var(--green-light);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .photo-oval img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-text {
+      flex: 1;
+    }
+
+    .photo-text p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--white-soft);
+    }
+
+    .photo-text a {
+      color: var(--green-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .photo-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* ========== SECTIONS ========== */
+    .section {
+      width: 100%;
+      padding: 4rem 2rem;
+      background: var(--green-dark) !important;
+    }
+
+    .section-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--white);
+      white-space: nowrap;
+    }
+
+    .section-divider {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--white), transparent);
+    }
+
+    /* ========== EXPERIENCE SECTION (Light Green) ========== */
+    .experience-section {
+      width: 100%;
+      padding: 4rem 2rem;
+      background: var(--green-accent) !important;
+    }
+
+    .experience-section .section-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .experience-section .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .experience-section .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      font-weight: 500;
+      color: var(--green-darkest);
+      white-space: nowrap;
+    }
+
+    .experience-section .section-divider {
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(to right, var(--green-darkest), transparent);
+    }
+
+    .experience-text {
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: var(--green-darkest);
+    }
+
+    .experience-text strong {
+      color: var(--green-darkest);
+      font-weight: 700;
+      background: rgba(0, 0, 0, 0.08);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+    }
+
+    /* ========== CONTACT SECTION ========== */
+    .contact-section {
+      width: 100%;
+      padding: 4rem 2rem;
+      background: var(--green-dark) !important;
+    }
+
+    .contact-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-name {
+      font-family: "Playfair Display", serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .contact-item {
+      font-size: 1.1rem;
+      color: var(--white-soft);
+    }
+
+    .contact-item a {
+      color: var(--green-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .contact-item a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .resume-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      background: var(--green-accent);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+    }
+
+    .resume-link:hover {
+      background: var(--green-light);
+      transform: translateY(-2px);
+    }
+
+    .resume-link svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .profile-photo {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+      }
+
+      .hero-cta-row {
+        justify-content: center;
+      }
+
+      .photo-section-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .photo-oval {
+        width: 280px;
+        height: 180px;
+        margin: 0 auto;
+        order: -1;
+      }
+
+      .section {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-content reveal">
+      <div class="profile-photo">
+        <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/hutch.png" alt="Quintin Hutch Tyree" />
+      </div>
+      <div class="hero-text">
+        <h1>About Me</h1>
+        <p class="hero-bio">
+          I'm a geospatial scientist with a background in ecology, remote sensing, and spatial data analysis. I have always been driven by a curiosity about the natural world, and how we can harness spatial data and technology to better understand and manage it. My experience spans remote sensing, GIS analysis, and modeling, with a focus on producing research that informs practical solutions. I'm drawn to projects that apply these tools to real-world problems, whether in conservation, resource management, or environmental planning. Click <a href="https://hutchtyree.com/gis">here</a> to see some of my research!
+        </p>
+        <div class="hero-cta-row">
+          <p class="highlight-text">I specialize in insightful visualizations!</p>
+          <a href="https://hutchtyree.com/webapps" class="cta-link">
+            View Geospatial Web Apps
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PHOTOGRAPHY ========== -->
+  <section class="photo-section">
+    <div class="photo-section-content reveal">
+      <div class="photo-text">
+        <p>
+          I am also very passionate about the role of photography in inspiring others to protect our natural places. Through my lens, I aim to capture the beauty and fragility of wildlife and wild landscapes, hoping to spark a deeper connection between people and the environment. <a href="https://hutchtyree.com/gallery">Click the photo to view the gallery!</a>
+        </p>
+      </div>
+      <a href="https://hutchtyree.com/gallery" class="photo-oval" target="_blank">
+        <img src="https://raw.githubusercontent.com/qtyree1328/TyreeSpatial_photos/refs/heads/main/moose.png" alt="Moose Photography" />
+      </a>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE ========== -->
+  <section class="experience-section">
+    <div class="section-content">
+      <div class="section-header reveal">
+        <h2 class="section-title">More About My Experience</h2>
+        <div class="section-divider"></div>
+      </div>
+      <p class="experience-text reveal">
+        I am a geospatial data scientist specializing in <strong>multi-sensor fusion techniques</strong>, integrating high-resolution SAR (ICEYE, Sentinel-1), optical (Planet, Sentinel-2, Landsat), and LIDAR (GEDI, PCL) data with advanced models for land use classification, change detection, and ecosystem impact assessment. Demonstrated expertise in applying remote sensing to ecology and conservation challenges.
+      </p>
+      <br>
+      <p class="experience-text reveal">
+        Pursuing a <strong>Master of Science in Geography</strong> with a concentration in Remote Sensing and Geospatial Research at the University of Massachusetts Amherst, developing cross-disciplinary methodologies for crop area mapping via multi-temporal imagery analysis. As a Teaching Assistant for Remote Sensing, GIS, and Python for GIS courses, I earned the <strong>TA of the Year award (2024)</strong> in the Earth Sciences department (ECGS). My thesis, "Evaluating Multi-Temporal Optical and Radar Imagery for Crop Area Mapping in the US," utilizes Python, Google Earth Engine, R, MATLAB, and ESRI tools to process large-scale datasets and generate insights for agricultural and environmental applications.
+      </p>
+      <br>
+      <p class="experience-text reveal">
+        In my role as <strong>Lead Geospatial Analyst at Collaborative Earth</strong>, I direct the remote sensing for the Beaver Lab, deploying CNNs and automated workflows in Python and Google Earth Engine to model beaver dam dynamics, derive spectral indices and terrain metrics across large sites, and build interactive web applications for data delivery. At <strong>Defenders of Wildlife</strong>, I developed predictive land use change models and geodatabases using ArcGIS Pro, supporting the PLACE project and co-authoring a white paper on Ocklawaha Dam restoration.
+      </p>
+      <br>
+      <p class="experience-text reveal">
+        With the <strong>US Forest Service</strong>, I conducted bear behavior monitoring and established the @bears_of_anan social media platform, achieving 75,000+ followers and 10M+ views to support outreach. At <strong>Dartmouth College</strong> (BA in Biology, High Honors), my senior thesis on gliding mammal evolution—integrating LIDAR, Sentinel, and biodiversity data—received the Chris Reed Award for Biology.
+      </p>
+      <br>
+      <p class="experience-text reveal">
+        <strong>Technical Proficiencies:</strong> Remote Sensing & GIS (Google Earth Engine, AWS, ArcGIS Pro/Online, QGIS); Programming (Python, R, MATLAB, JavaScript); Data Visualization; Machine Learning Applications in Spatial Analysis. Focused on interdisciplinary projects, technical communication, and deploying geospatial tools for risk assessment, land restoration, and regenerative agriculture.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact-section">
+    <div class="contact-content">
+      <div class="section-header reveal">
+        <h2 class="section-title">Contact</h2>
+        <div class="section-divider"></div>
+      </div>
+      <h3 class="contact-name reveal">Quintin "Hutch" Tyree</h3>
+      <div class="contact-info reveal">
+        <p class="contact-item">
+          <a href="mailto:tyreespatial@gmail.com">tyreespatial@gmail.com</a>
+        </p>
+        <p class="contact-item">
+          Instagram: <a href="https://instagram.com/tyree__photography__" target="_blank">@tyree__photography__</a>
+        </p>
+        <p class="contact-item">
+          Personal: 917-597-7183
+        </p>
+      </div>
+      <a href="#" class="resume-link reveal">
+        More About My Career & Skills
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+
+      revealElements.forEach((el, index) => {
+        const elementTop = el.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if (elementTop < windowHeight - revealPoint) {
+          setTimeout(() => {
+            el.classList.add("active");
+          }, (index % 4) * 100);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+</body>
+</html>
